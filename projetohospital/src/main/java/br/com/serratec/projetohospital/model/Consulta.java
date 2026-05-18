@@ -3,8 +3,12 @@ package br.com.serratec.projetohospital.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.com.serratec.projetohospital.enums.Status;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,12 +29,15 @@ public class Consulta {
     @Future
     private LocalTime horaConsulta;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     // @ManyToMany
     // @JoinTable(name = "paciente_medico", joinColumns = @JoinColumn(name = "id_paciente"),
     //         inverseJoinColumns = @JoinColumn(name = "id_medico"))
 
+    
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_paciente")
     private Paciente paciente;

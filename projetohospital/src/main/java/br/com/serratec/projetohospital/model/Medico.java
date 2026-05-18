@@ -2,6 +2,8 @@ package br.com.serratec.projetohospital.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
@@ -11,6 +13,7 @@ public class Medico extends Pessoa {
     private Long crm;
     private String especialidade;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "medico")
     private List<Consulta> consultas;
 
