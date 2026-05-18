@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @MappedSuperclass
@@ -24,9 +25,8 @@ public class Pessoa {
     private String email;
 
     @NotBlank
-    @Size(min = 9, message = "Insira um telefone válido")
+    @Pattern(regexp = "^\\d{10}$", message = "Telefone tem que ter até 11 dígitos")
     private String telefone;
-
 
     public Long getId() {
         return id;
