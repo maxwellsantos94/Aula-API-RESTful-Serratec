@@ -13,11 +13,11 @@ import jakarta.validation.constraints.Size;
 public class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
-    @Size(max = 70, message = "Nome muito longo.")
+    @Size(max = 60, message = "Nome muito longo.")
     private String nome;
 
     @NotBlank
@@ -25,7 +25,7 @@ public class Pessoa {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "^\\d{10}$", message = "Telefone tem que ter até 11 dígitos")
+    @Pattern(regexp = "^\\d{11}$", message = "Telefone deve conter 11 números")
     private String telefone;
 
     public Long getId() {

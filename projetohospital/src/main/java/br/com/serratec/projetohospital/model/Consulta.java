@@ -14,7 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Consulta {
@@ -23,19 +23,15 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Future
+    @NotNull
     private LocalDate dataConsulta;
 
-    @Future
+    @NotNull
     private LocalTime horaConsulta;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Status status;
-
-    // @ManyToMany
-    // @JoinTable(name = "paciente_medico", joinColumns = @JoinColumn(name = "id_paciente"),
-    //         inverseJoinColumns = @JoinColumn(name = "id_medico"))
-
     
     @JsonBackReference
     @ManyToOne

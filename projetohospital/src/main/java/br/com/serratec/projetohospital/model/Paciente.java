@@ -14,8 +14,6 @@ public class Paciente extends Pessoa {
     @OneToMany(mappedBy = "paciente")
     private List<Consulta> consultas;
 
-    
-    
     public List<Consulta> getConsultas() {
         return consultas;
     }
