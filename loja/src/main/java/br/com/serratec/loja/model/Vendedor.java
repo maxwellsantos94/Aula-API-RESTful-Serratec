@@ -14,10 +14,11 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="tipoVendedor", discriminatorType=DiscriminatorType.STRING)
 public abstract class Vendedor {
 
@@ -32,14 +33,12 @@ public abstract class Vendedor {
     @Email
     protected String email;
 
-    @NotBlank
+    @NotNull(message = "Salário obrigatório")
     @DecimalMin(value = "1621.00")
     protected Double salario;
 
     @OneToMany(mappedBy = "vendedor")
     private List<LancamentoVendas> vendas;
-
-    //private String tipoVendedor;
 
     public Vendedor() {
     }

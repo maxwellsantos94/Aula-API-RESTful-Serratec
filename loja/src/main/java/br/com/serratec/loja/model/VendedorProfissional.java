@@ -4,7 +4,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("profissional")
+@DiscriminatorValue("PROFISSIONAL")
 public class VendedorProfissional extends Vendedor {
 
     private String cnpj;
